@@ -1,11 +1,7 @@
 import NotesList from "../component/NotesList";
 
 const Home = () => {
-  return (
-    <>
-      <NotesList />
-    </>
-  );
+  return <NotesList />;
 };
 
 export default Home;

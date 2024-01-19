@@ -34,7 +34,7 @@ const NotesList = () => {
     }
   };
 
-  const handlDelete = async (id) => {
+  const handleDelete = async (id) => {
     try {
       const res = await axios.delete(`${rootUrl}/api/note/rem/${id}`, {
         headers: {
@@ -49,6 +49,33 @@ const NotesList = () => {
       setError(error);
     }
   };
+  const NoteRow = ({ note, onDelete }) => (
+    <tr>
+      <td style={{ fontWeight: "bold" }}>
+        <Link to={`/${note._id}`}>{truncateText(note.title, 4)}</Link>
+      </td>
+      <td>{truncateText(note.description, 3)}</td>
+      <td>{new Date(note.updatedAt).toLocaleDateString()}</td>
+      <td>
+        <div
+          style={{
+            display: "flex",
+            gap: "10px",
+            justifyContent: "center",
+          }}
+        >
+          <Link to={`/form/${note._id}`}>
+            <Button variant="outline-info">
+              Edit &nbsp; <Pencil />
+            </Button>
+          </Link>
+          <Button variant="outline-danger" onClick={() => onDelete(note._id)}>
+            Delete &nbsp; <Trash />
+          </Button>
+        </div>
+      </td>
+    </tr>
+  );
 
   useEffect(() => {
     fetchNotes();
@@ -74,39 +101,15 @@ const NotesList = () => {
               </tr>
             </thead>
             <tbody>
-              {notes.length > 0 &&
+              {notes.length > 0 ? (
                 notes.map((note) => (
-                  <tr key={note._id}>
-                    <td style={{ fontWeight: "bold" }}>
-                      <Link to={`/${note._id}`}>
-                        {truncateText(note.title, 4)}
-                      </Link>
-                    </td>
-                    <td>{truncateText(note.description, 3)}</td>
-                    <td>{new Date(note.updatedAt).toLocaleDateString()}</td>
-                    <td>
-                      <div
-                        style={{
-                          display: "flex",
-                          gap: "10px",
-                          justifyContent: "center",
-                        }}
-                      >
-                        <Link to={`/form/${note._id}`}>
-                          <Button variant="outline-info">
-                            Edit &nbsp; <Pencil />
-                          </Button>
-                        </Link>
-                        <Button
-                          variant="outline-danger"
-                          onClick={() => handlDelete(note._id)}
-                        >
-                          Delete &nbsp; <Trash />
-                        </Button>
-                      </div>
-                    </td>
-                  </tr>
-                ))}
+                  <NoteRow key={note._id} note={note} onDelete={handleDelete} />
+                ))
+              ) : (
+                <tr>
+                  <td colSpan="4">No notes available</td>
+                </tr>
+              )}
             </tbody>
           </Table>
         </div>

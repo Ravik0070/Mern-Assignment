@@ -33,7 +33,6 @@ const Note = () => {
   }, [id, currentUser.token, currentUser.user._id]);
 
   return (
-    <>
       <div className="note">
         <Card style={{ width: "80%", textAlign: "center" }}>
           <Card.Body>
@@ -52,9 +51,8 @@ const Note = () => {
         <div className="info">
           <p>last updated: {note?.formattedUpdatedAt}</p>
         </div>
+        {error && <Errors error={error} />}
       </div>
-      {error && <Errors error={error} />}
-    </>
   );
 };
 
