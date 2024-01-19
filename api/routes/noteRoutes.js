@@ -7,6 +7,6 @@ router.get("/getnote/:id", verifyToken, noteController.GetNote);
 router.get("/all", verifyToken, noteController.GetNotes);
 router.post("/create", verifyToken, noteController.Create);
 router.put("/update/:id", verifyToken, noteController.Update);
-router.delete("/delete/:id", verifyToken, noteController.Delete);
+router.delete("/rem/:id", verifyToken, noteController.Delete);
 
 module.exports = router;
