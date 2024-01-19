@@ -29,14 +29,20 @@ const Note = () => {
       }
     };
     getNote();
-  }, [id]);
+  }, [id, currentUser.token, currentUser.user._id]);
 
   return (
     <>
       <div className="note">
         <Card style={{ width: "80%", textAlign: "center" }}>
           <Card.Body>
-            <Card.Title style={{ backgroundColor: "gray", padding:"10px 0", color:"white" }}>
+            <Card.Title
+              style={{
+                backgroundColor: "gray",
+                padding: "10px 0",
+                color: "white",
+              }}
+            >
               {note?.title}
             </Card.Title>
             <Card.Text>{note?.description}</Card.Text>

@@ -22,7 +22,7 @@ const Register = () => {
     try {
       if (inputs.password === inputs.confirmpassword) {
         const { confirmpassword, ...others } = inputs;
-        let res = await axios.post("/auth/register", others);
+        await axios.post("/auth/register", others);
         navigate("/login");
       } else {
         setError("Password mismatch");
