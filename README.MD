@@ -1,3 +1,4 @@
+## MERN STACK APP - NoteVault 
 # Node.js API and React.js Setup
 
 This repository contains a Node.js API and a React.js application. Follow the instructions below to set up and run both projects on your local system.
@@ -7,13 +8,13 @@ This repository contains a Node.js API and a React.js application. Follow the in
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/your-username/node-react-setup.git
+    git clone https://github.com/Ravik0070/NoteVault.git
     ```
 
 2. Navigate to the `api` directory:
 
     ```bash
-    cd node-react-setup/api
+    cd /api
     ```
 
 3. Install dependencies:
@@ -26,6 +27,8 @@ This repository contains a Node.js API and a React.js application. Follow the in
 
     ```env
     PORT=3001
+    SECRET_KEY= "any secret"
+    DBSTRING = "Your MongoDB Altas DB String for db connection"
     ```
 
     Update the `PORT` value if needed.
@@ -45,7 +48,7 @@ This repository contains a Node.js API and a React.js application. Follow the in
 2. Navigate to the `client` directory:
 
     ```bash
-    cd node-react-setup/client
+    cd /client
     ```
 
 3. Install dependencies:
@@ -54,20 +57,11 @@ This repository contains a Node.js API and a React.js application. Follow the in
     npm install
     ```
 
-4. Create a `.env` file in the `client` directory and add the following:
-
-    ```env
-    REACT_APP_API_URL=http://localhost:3001
-    ```
-
-    Update the `REACT_APP_API_URL` value if you changed the API port.
-
 5. Start the React.js application:
 
     ```bash
     npm start
     ```
-
     The React app will be available at http://localhost:3000.
 
 ## Accessing the Application
