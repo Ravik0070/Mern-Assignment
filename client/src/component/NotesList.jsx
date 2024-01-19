@@ -51,7 +51,7 @@ const NotesList = () => {
       }
     };
     fetchNotes();
-  }, [currentUser]);
+  }, [currentUser,notes.length]);
   return (
     <div className="main">
       <div className="notesContainer">
