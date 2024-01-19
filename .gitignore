@@ -16,8 +16,8 @@
 .env.development.local
 .env.test.local
 .env.production.local
-/api/.env
-
+./api/.env
+*.env
 /.env*
 
 npm-debug.log*
