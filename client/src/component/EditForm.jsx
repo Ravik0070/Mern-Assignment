@@ -45,7 +45,7 @@ const EditForm = () => {
     e.preventDefault();
     try {
       await axios.put(
-        `${rootUrl}/note/update/${id}`,
+        `${rootUrl}/api/note/update/${id}`,
         { title: inputs?.title, description: inputs?.description },
         {
           headers: {
@@ -64,7 +64,7 @@ const EditForm = () => {
   useEffect(() => {
     const fetchNote = async () => {
       try {
-        const res = await axios.get(`${rootUrl}/note/getnote/${id}`, {
+        const res = await axios.get(`${rootUrl}/api/note/getnote/${id}`, {
           headers: {
             Authorization: `Bearer ${currentUser.token}`,
           },

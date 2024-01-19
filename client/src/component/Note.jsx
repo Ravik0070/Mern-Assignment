@@ -13,7 +13,7 @@ const Note = () => {
   useEffect(() => {
     const getNote = async () => {
       try {
-        const res = await axios.get(`${rootUrl}/note/getnote/${id}`, {
+        const res = await axios.get(`${rootUrl}/api/note/getnote/${id}`, {
           headers: {
             Authorization: `Bearer ${currentUser.token}`,
           },

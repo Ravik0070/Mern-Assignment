@@ -20,7 +20,7 @@ const NotesList = () => {
 
   const handlDelete = async (id) => {
     try {
-      await axios.delete(`${rootUrl}/note/delete/${id}`, {
+      await axios.delete(`${rootUrl}/api/note/delete/${id}`, {
         headers: {
           Authorization: `Bearer ${currentUser.token}`,
         },
@@ -37,7 +37,7 @@ const NotesList = () => {
   useEffect(() => {
     const fetchNotes = async () => {
       try {
-        const res = await axios.get(`${rootUrl}/note/all`, {
+        const res = await axios.get(`${rootUrl}/api/note/all`, {
           headers: {
             Authorization: `Bearer ${currentUser.token}`,
           },
