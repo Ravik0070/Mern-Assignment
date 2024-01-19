@@ -2,7 +2,7 @@ import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/authContext";
 import { useNavigate, useParams } from "react-router-dom";
-import {rootUrl} from "../RootUrl";
+import { rootUrl } from "../RootUrl";
 import Errors from "./Errors";
 const EditForm = () => {
   const { id } = useParams();
@@ -18,8 +18,8 @@ const EditForm = () => {
   const handleAdd = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(
-        `${rootUrl}/note/create`,
+      await axios.post(
+        `${rootUrl}/api/note/create`,
         { title: inputs?.title, description: inputs?.description },
         {
           headers: {
@@ -30,13 +30,11 @@ const EditForm = () => {
           },
         }
       );
-      if (res.data) {
-        setInputs({
-          title: "",
-          description: "",
-        });
-        navigate("/");
-      }
+      setInputs({
+        title: "",
+        description: "",
+      });
+      navigate("/");
     } catch (error) {
       setError(error);
     }
