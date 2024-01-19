@@ -20,7 +20,7 @@ const NotesList = () => {
 
   const handlDelete = async (id) => {
     try {
-      await axios.delete(`${rootUrl}/api/note/delete/${id}`, {
+      const res = await axios.delete(`${rootUrl}/api/note/delete/${id}`, {
         headers: {
           Authorization: `Bearer ${currentUser.token}`,
         },
