@@ -73,7 +73,7 @@ const NotesList = () => {
               </tr>
             </thead>
             <tbody>
-              {notes.map((note) => (
+              {notes.length > 0 && notes.map((note) => (
                 <tr key={note._id}>
                   <td style={{ fontWeight: "bold" }}>
                     <Link to={`/${note._id}`}>
