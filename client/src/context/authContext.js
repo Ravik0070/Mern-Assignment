@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
+import { rootUrl } from "../RootUrl";
 
 export const AuthContext = createContext();
 
@@ -10,7 +11,7 @@ export const AuthContextProvider = ({ children }) => {
 
   const login = async (inputs) => {
     try {
-      const resp = await axios.post("/auth/login", inputs);
+      const resp = await axios.post(`${rootUrl}/auth/login`, inputs);
       setCurrentUser(resp.data);
       return resp.data;
     } catch (error) {

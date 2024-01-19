@@ -2,6 +2,7 @@ import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/authContext";
 import { useNavigate, useParams } from "react-router-dom";
+import rootUrl from "../RootUrl";
 import Errors from "./Errors";
 const EditForm = () => {
   const { id } = useParams();
@@ -18,7 +19,7 @@ const EditForm = () => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "/note/create",
+        `${rootUrl}/note/create`,
         { title: inputs?.title, description: inputs?.description },
         {
           headers: {
@@ -44,7 +45,7 @@ const EditForm = () => {
     e.preventDefault();
     try {
       await axios.put(
-        `/note/update/${id}`,
+        `${rootUrl}/note/update/${id}`,
         { title: inputs?.title, description: inputs?.description },
         {
           headers: {
@@ -63,7 +64,7 @@ const EditForm = () => {
   useEffect(() => {
     const fetchNote = async () => {
       try {
-        const res = await axios.get(`/note/getnote/${id}`, {
+        const res = await axios.get(`${rootUrl}/note/getnote/${id}`, {
           headers: {
             Authorization: `Bearer ${currentUser.token}`,
           },
@@ -80,7 +81,7 @@ const EditForm = () => {
       setEdit(true);
       fetchNote();
     }
-  }, [currentUser.token,id,currentUser.user._id]);
+  }, [currentUser.token, id, currentUser.user._id]);
   return (
     <div className="noteForm">
       <form onSubmit={edit ? handleUpdate : handleAdd}>

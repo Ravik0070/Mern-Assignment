@@ -4,6 +4,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../context/authContext";
 import Errors from "../component/Errors";
 import Button from "react-bootstrap/Button";
+import rootUrl from "../RootUrl";
 const Login = () => {
   const [inputs, setInputs] = useState({
     email: "",

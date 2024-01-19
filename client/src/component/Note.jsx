@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { AuthContext } from "../context/authContext";
 import Errors from "./Errors";
 import Card from "react-bootstrap/Card";
+import rootUrl from "../RootUrl"
 const Note = () => {
   const [note, setNote] = useState(null);
   const [error, setError] = useState("");
@@ -12,7 +13,7 @@ const Note = () => {
   useEffect(() => {
     const getNote = async () => {
       try {
-        const res = await axios.get(`/note/getnote/${id}`, {
+        const res = await axios.get(`${rootUrl}/note/getnote/${id}`, {
           headers: {
             Authorization: `Bearer ${currentUser.token}`,
           },

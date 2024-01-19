@@ -4,6 +4,7 @@ import { useState } from "react";
 import axios from "axios";
 import Errors from "../component/Errors";
 import Button from "react-bootstrap/Button";
+import  rootUrl  from "../RootUrl";
 const Register = () => {
   const [inputs, setInputs] = useState({
     username: "",
@@ -22,7 +23,7 @@ const Register = () => {
     try {
       if (inputs.password === inputs.confirmpassword) {
         const { confirmpassword, ...others } = inputs;
-        await axios.post("/auth/register", others);
+        await axios.post(`${rootUrl}/auth/register`, others);
         navigate("/login");
       } else {
         setError("Password mismatch");
