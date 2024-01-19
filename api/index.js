@@ -13,7 +13,7 @@ const mongoString = process.env.DBString;
 const PORT = process.env.PORT || 5000;
 // Middleware to parse JSON request bodies
 app.use(express.json());
-app.use(cors({origin: true}));
+app.use(cors({ origin: true }));
 //Database connection
 mongoose.connect(mongoString);
 const database = mongoose.connection;
@@ -24,6 +24,17 @@ database.on("error", (error) => {
 
 database.once("connected", () => {
   console.log("Connected to MongoDB");
+});
+
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PUT, PATCH, DELETE, OPTIONS"
+  );
+  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  res.header("Access-Control-Allow-Credentials", true);
+  next();
 });
 
 //For handling routes under /api/auth
