@@ -6,7 +6,7 @@ import Errors from "./Errors";
 import { BadgePlus, Pencil, Trash } from "lucide-react";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
-import {rootUrl} from "../RootUrl"
+import { rootUrl } from "../RootUrl";
 function truncateText(text, maxWords) {
   const words = text.split(" ");
   const truncated = words.slice(0, maxWords).join(" ");
@@ -18,6 +18,22 @@ const NotesList = () => {
   const [notes, setNotes] = useState([]);
   const [error, setError] = useState("");
 
+  const fetchNotes = async () => {
+    try {
+      const res = await axios.get(`${rootUrl}/api/note/all`, {
+        headers: {
+          Authorization: `Bearer ${currentUser.token}`,
+        },
+        params: {
+          userId: currentUser.user._id,
+        },
+      });
+      setNotes(res.data.notes || []);
+    } catch (error) {
+      setError(error);
+    }
+  };
+
   const handlDelete = async (id) => {
     try {
       const res = await axios.delete(`${rootUrl}/api/note/rem/${id}`, {
@@ -28,30 +44,15 @@ const NotesList = () => {
           userId: currentUser.user._id,
         },
       });
-      setNotes((prevNotes) => prevNotes.filter((note) => note._id !== id));
+      await fetchNotes();
     } catch (error) {
       setError(error);
     }
   };
 
   useEffect(() => {
-    const fetchNotes = async () => {
-      try {
-        const res = await axios.get(`${rootUrl}/api/note/all`, {
-          headers: {
-            Authorization: `Bearer ${currentUser.token}`,
-          },
-          params: {
-            userId: currentUser.user._id,
-          },
-        });
-        setNotes(res.data.notes || []);
-      } catch (error) {
-        setError(error);
-      }
-    };
     fetchNotes();
-  }, [currentUser,notes.length]);
+  }, []);
   return (
     <div className="main">
       <div className="notesContainer">
@@ -63,7 +64,7 @@ const NotesList = () => {
           </Button>
         </Link>
         <div className="tableContainer">
-          <Table hover striped="columns" style={{textAlign:"center"}}>
+          <Table hover striped="columns" style={{ textAlign: "center" }}>
             <thead>
               <tr>
                 <th>Title</th>
@@ -73,32 +74,39 @@ const NotesList = () => {
               </tr>
             </thead>
             <tbody>
-              {notes.length > 0 && notes.map((note) => (
-                <tr key={note._id}>
-                  <td style={{ fontWeight: "bold" }}>
-                    <Link to={`/${note._id}`}>
-                      {truncateText(note.title, 4)}
-                    </Link>
-                  </td>
-                  <td>{truncateText(note.description, 3)}</td>
-                  <td>{new Date(note.updatedAt).toLocaleDateString()}</td>
-                  <td>
-                    <div style={{display:"flex",gap:"10px",justifyContent:"center"}}>
-                      <Link to={`/form/${note._id}`}>
-                        <Button variant="outline-info">
-                          Edit &nbsp; <Pencil />
-                        </Button>
+              {notes.length > 0 &&
+                notes.map((note) => (
+                  <tr key={note._id}>
+                    <td style={{ fontWeight: "bold" }}>
+                      <Link to={`/${note._id}`}>
+                        {truncateText(note.title, 4)}
                       </Link>
-                      <Button
-                        variant="outline-danger"
-                        onClick={() => handlDelete(note._id)}
+                    </td>
+                    <td>{truncateText(note.description, 3)}</td>
+                    <td>{new Date(note.updatedAt).toLocaleDateString()}</td>
+                    <td>
+                      <div
+                        style={{
+                          display: "flex",
+                          gap: "10px",
+                          justifyContent: "center",
+                        }}
                       >
-                        Delete &nbsp; <Trash />
-                      </Button>
-                    </div>
-                  </td>
-                </tr>
-              ))}
+                        <Link to={`/form/${note._id}`}>
+                          <Button variant="outline-info">
+                            Edit &nbsp; <Pencil />
+                          </Button>
+                        </Link>
+                        <Button
+                          variant="outline-danger"
+                          onClick={() => handlDelete(note._id)}
+                        >
+                          Delete &nbsp; <Trash />
+                        </Button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
             </tbody>
           </Table>
         </div>
