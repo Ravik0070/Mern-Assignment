@@ -39,6 +39,7 @@ const NotesList = () => {
       const res = await axios.delete(`${rootUrl}/api/note/rem/${id}`, {
         headers: {
           Authorization: `Bearer ${currentUser.token}`,
+          Content-Type: "application/json",
         },
         params: {
           userId: currentUser.user._id,
