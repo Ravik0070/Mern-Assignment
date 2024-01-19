@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { AuthContext } from "../context/authContext";
 import Errors from "./Errors";
+import Card from "react-bootstrap/Card";
 const Note = () => {
   const [note, setNote] = useState(null);
   const [error, setError] = useState("");
@@ -33,8 +34,14 @@ const Note = () => {
   return (
     <>
       <div className="note">
-        <h1>{note?.title}</h1>
-        <h3>{note?.description}</h3>
+        <Card style={{ width: "80%", textAlign: "center" }}>
+          <Card.Body>
+            <Card.Title style={{ backgroundColor: "gray", padding:"10px 0", color:"white" }}>
+              {note?.title}
+            </Card.Title>
+            <Card.Text>{note?.description}</Card.Text>
+          </Card.Body>
+        </Card>
         <div className="info">
           <p>last updated: {note?.formattedUpdatedAt}</p>
         </div>

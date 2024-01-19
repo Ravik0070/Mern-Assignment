@@ -4,6 +4,8 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import Errors from "./Errors";
 import { BadgePlus, Pencil, Trash } from "lucide-react";
+import Table from "react-bootstrap/Table";
+import Button from "react-bootstrap/Button";
 
 function truncateText(text, maxWords) {
   const words = text.split(" ");
@@ -18,7 +20,7 @@ const NotesList = () => {
 
   const handlDelete = async (id) => {
     try {
-      const res = await axios.delete(`/note/delete/${id}`, {
+      await axios.delete(`/note/delete/${id}`, {
         headers: {
           Authorization: `Bearer ${currentUser.token}`,
         },
@@ -55,13 +57,13 @@ const NotesList = () => {
       <div className="notesContainer">
         <div className="heading">{currentUser.user.username}'s Notes</div>
         <Link to="/form">
-          <button className="addBtn">
+          <Button variant="outline-secondary">
             Add Note &nbsp;
             <BadgePlus />
-          </button>
+          </Button>
         </Link>
         <div className="tableContainer">
-          <table>
+          <Table hover striped="columns" style={{textAlign:"center"}}>
             <thead>
               <tr>
                 <th>Title</th>
@@ -81,24 +83,24 @@ const NotesList = () => {
                   <td>{truncateText(note.description, 3)}</td>
                   <td>{new Date(note.updatedAt).toLocaleDateString()}</td>
                   <td>
-                    <div className="actionsContainer">
+                    <div style={{display:"flex",gap:"10px",justifyContent:"center"}}>
                       <Link to={`/form/${note._id}`}>
-                        <button className="edit">
+                        <Button variant="outline-info">
                           Edit &nbsp; <Pencil />
-                        </button>
+                        </Button>
                       </Link>
-                      <button
-                        className="delete"
+                      <Button
+                        variant="outline-danger"
                         onClick={() => handlDelete(note._id)}
                       >
                         Delete &nbsp; <Trash />
-                      </button>
+                      </Button>
                     </div>
                   </td>
                 </tr>
               ))}
             </tbody>
-          </table>
+          </Table>
         </div>
       </div>
       {error && <Errors error={error} />}

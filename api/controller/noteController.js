@@ -56,7 +56,9 @@ exports.Delete = async (req, res) => {
 //Get All Notes Of User
 exports.GetNotes = async (req, res) => {
   try {
-    const notes = await Note.find({ userId: req.query.userId });
+    const notes = await Note.find({ userId: req.query.userId }).sort({
+      createdAt: -1,
+    });
     res.status(200).json({ notes });
   } catch (error) {
     res.status(500).json({ message: "Something went wrong" });

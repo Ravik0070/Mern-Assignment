@@ -4,7 +4,6 @@ import { createContext, useEffect, useState } from "react";
 export const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
-  const [error, setError] = useState("");
   const [currentUser, setCurrentUser] = useState(
     JSON.parse(localStorage.getItem("userId") || null)
   );
@@ -15,7 +14,7 @@ export const AuthContextProvider = ({ children }) => {
       setCurrentUser(resp.data);
       return resp.data;
     } catch (error) {
-      setError(error);
+      console.log(error);
     }
   };
   const logout = async () => {

@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import Errors from "../component/Errors";
+import Button from "react-bootstrap/Button";
 const Register = () => {
   const [inputs, setInputs] = useState({
     username: "",
@@ -80,9 +81,9 @@ const Register = () => {
                 required
               />
             </div>
-            <button type="submit" className="submitBtn">
-              Login
-            </button>
+            <Button variant="secondary" type="submit">
+              Register
+            </Button>
           </form>
           <div className="signupLink">
             Already have an account? &nbsp;

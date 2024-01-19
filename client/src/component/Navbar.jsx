@@ -2,6 +2,7 @@ import { PowerCircle } from "lucide-react";
 import { useContext } from "react";
 import { AuthContext } from "../context/authContext";
 import { Link, useNavigate } from "react-router-dom";
+import Button from "react-bootstrap/Button";
 const Navbar = () => {
   const navigate = useNavigate();
   const handleLogout = (e) => {
@@ -16,10 +17,10 @@ const Navbar = () => {
       </div>
       {currentUser && (
         <div className="logoutBtn">
-          <button onClick={handleLogout}>
+          <Button variant="outline-danger" onClick={handleLogout}>
             Logout &nbsp;
             <PowerCircle color="red" />
-          </button>
+          </Button>
         </div>
       )}
     </div>

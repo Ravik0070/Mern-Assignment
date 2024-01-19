@@ -34,6 +34,7 @@ const EditForm = () => {
           title: "",
           description: "",
         });
+        navigate("/");
       }
     } catch (error) {
       setError(error);
@@ -42,7 +43,7 @@ const EditForm = () => {
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.put(
+      await axios.put(
         `/note/update/${id}`,
         { title: inputs?.title, description: inputs?.description },
         {
@@ -79,7 +80,7 @@ const EditForm = () => {
       setEdit(true);
       fetchNote();
     }
-  }, []);
+  }, [currentUser.token,id,currentUser.user._id]);
   return (
     <div className="noteForm">
       <form onSubmit={edit ? handleUpdate : handleAdd}>

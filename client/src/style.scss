@@ -1,3 +1,4 @@
+@import '~bootstrap/scss/bootstrap';
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 * {
@@ -51,17 +52,6 @@ body {
                 justify-content: center;
                 align-items: center;
 
-                button {
-                    padding: 5px 10px;
-                    border-radius: 10px;
-                    border: none;
-                    display: flex;
-                    align-items: center;
-                    font-size: 20px;
-                    color: red;
-                    background-color: white;
-                    box-shadow: rgba(234, 234, 234, 0.35) 0px 5px 15px;
-                }
             }
         }
 
@@ -154,20 +144,6 @@ body {
                     color: white
                 }
 
-                a {
-
-                    .addBtn {
-                        color: #756AB6;
-                        border-radius: 10px;
-                        border: 2px solid #756AB6;
-                        padding: 5px 10px;
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-
-                    }
-                }
-
                 .tableContainer {
                     height: 500px;
                     display: flex;
@@ -177,55 +153,6 @@ body {
                     border-radius: 5px;
                     overflow-y: scroll;
 
-                    table {
-                        width: 100%;
-                        text-align: center;
-
-                        thead {
-                            tr {
-                                th {
-                                    border-bottom: 1px solid gray;
-                                    padding: 15px 20px;
-                                }
-                            }
-                        }
-
-                        tbody {
-
-                            tr {
-                                td {
-                                    border-bottom: 1px solid gray;
-                                    padding: 10px;
-
-                                    .actionsContainer {
-                                        display: flex;
-                                        justify-content: center;
-                                        gap: 10px;
-
-                                        .edit {
-                                            display: flex;
-                                            justify-content: center;
-                                            align-items: center;
-                                            color: #756AB6;
-                                            border-radius: 10px;
-                                            border: 2px solid #756AB6;
-                                            padding: 5px 10px;
-                                        }
-
-                                        .delete {
-                                            display: flex;
-                                            justify-content: center;
-                                            align-items: center;
-                                            color: red;
-                                            border-radius: 10px;
-                                            border: 2px solid red;
-                                            padding: 5px 10px;
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
                 }
             }
         }
@@ -310,55 +237,5 @@ body {
             width: 100%;
         }
 
-        .app .main .notesContainer {
-            .tableContainer {
-                table {
-                    thead {
-                        tr {
-                            th {
-                                font-size: 10px;
-                                padding: 5px 5px;
-                            }
-                        }
-                    }
-
-                    tbody {
-                        font-size: 10px;
-
-                        tr {
-                            td {
-                                padding: 5px 3px;
-
-                                .actionsContainer {
-                                    display: flex;
-                                    justify-content: center;
-                                    flex-direction: column;
-                                    gap: 7px;
-
-                                    .edit {
-
-                                        font-size: 10px;
-                                        color: #756AB6;
-                                        border-radius: 10px;
-                                        border: 2px solid #756AB6;
-                                        padding: 3px 7px;
-
-                                    }
-
-                                    .delete {
-                                        font-size: 10px;
-                                        color: red;
-                                        border-radius: 10px;
-                                        border: 2px solid red;
-                                        padding: 3px 7px;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-
-        }
     }
 }

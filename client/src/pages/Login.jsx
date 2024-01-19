@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { useContext, useState } from "react";
 import { AuthContext } from "../context/authContext";
 import Errors from "../component/Errors";
+import Button from "react-bootstrap/Button";
 const Login = () => {
   const [inputs, setInputs] = useState({
     email: "",
@@ -58,9 +59,9 @@ const Login = () => {
                 required
               />
             </div>
-            <button type="submit" className="submitBtn">
+            <Button variant="secondary" type="submit">
               Login
-            </button>
+            </Button>
           </form>
           <div className="signupLink">
             Don't have an account? &nbsp;
