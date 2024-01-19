@@ -26,7 +26,7 @@ This repository contains a Node.js API and a React.js application. Follow the in
 4. Create a `.env` file in the `api` directory and add the following:
 
     ```env
-    PORT=3001
+    PORT=5000
     SECRET_KEY= "any secret"
     DBSTRING = "Your MongoDB Altas DB String for db connection"
     ```
@@ -36,10 +36,10 @@ This repository contains a Node.js API and a React.js application. Follow the in
 5. Start the Node.js API:
 
     ```bash
-    npm start
+    npm mystart
     ```
 
-    The API will be available at http://localhost:3001.
+    The API will be available at http://localhost:5000.
 
 ## React.js Application Setup
 
@@ -68,10 +68,10 @@ This repository contains a Node.js API and a React.js application. Follow the in
 
 Visit [http://localhost:3000](http://localhost:3000) in your web browser to access the React.js application. It will communicate with the Node.js API running at [http://localhost:3001](http://localhost:3001).
 
-# Requirements for Vercel
+# Requirements for Vercel deployment
 1. Vercel Account
 2. Go to  [Vercel](https://vercel.com/) for more information
 
 ##NOTE:
-** There are  few issues with vercerl, related to cors delete and update requests, but works fine on local. **
+**There are  few issues going on vercerl, related to cors delete and update requests, but works fine on local.**
 Feel free to explore and modify the code as needed for your project!
