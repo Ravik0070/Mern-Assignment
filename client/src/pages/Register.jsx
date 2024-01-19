@@ -4,7 +4,7 @@ import { useState } from "react";
 import axios from "axios";
 import Errors from "../component/Errors";
 import Button from "react-bootstrap/Button";
-import  rootUrl  from "../RootUrl";
+import  {rootUrl}  from "../RootUrl";
 const Register = () => {
   const [inputs, setInputs] = useState({
     username: "",

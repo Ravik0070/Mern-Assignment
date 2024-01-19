@@ -2,7 +2,7 @@ import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/authContext";
 import { useNavigate, useParams } from "react-router-dom";
-import rootUrl from "../RootUrl";
+import {rootUrl} from "../RootUrl";
 import Errors from "./Errors";
 const EditForm = () => {
   const { id } = useParams();

@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { AuthContext } from "../context/authContext";
 import Errors from "./Errors";
 import Card from "react-bootstrap/Card";
-import rootUrl from "../RootUrl"
+import {rootUrl} from "../RootUrl"
 const Note = () => {
   const [note, setNote] = useState(null);
   const [error, setError] = useState("");

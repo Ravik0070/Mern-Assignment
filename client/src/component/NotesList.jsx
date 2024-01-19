@@ -6,7 +6,7 @@ import Errors from "./Errors";
 import { BadgePlus, Pencil, Trash } from "lucide-react";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
-import rootUrl from "../RootUrl"
+import {rootUrl} from "../RootUrl"
 function truncateText(text, maxWords) {
   const words = text.split(" ");
   const truncated = words.slice(0, maxWords).join(" ");
