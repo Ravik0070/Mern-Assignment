@@ -13,7 +13,7 @@ const mongoString = process.env.DBString;
 const PORT = process.env.PORT || 5000;
 // Middleware to parse JSON request bodies
 app.use(express.json());
-app.use(cors(origin: true ));
+app.use(cors({origin: true}));
 //Database connection
 mongoose.connect(mongoString);
 const database = mongoose.connection;
